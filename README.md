@@ -5,4 +5,4 @@ This is a quick and dirty native ssh_askpass implementation for Haiku. It suppor
 Known issues:
 - If one connects to Haiku host using telnet, the SSH password requests will pop up on the desktop.
 - The password field is just a normal text control, so the password could be picked up with for example with a right hey command.
-- The Haiku KayStore system is not secure, as there is no authentication to the password containers. 
+- The Haiku KeyStore system is not secure, as there is no authentication to the password containers. 
