@@ -3,12 +3,14 @@ DESCRIPTION="SSH_askpass is a simple ui for authenticating your SSH connections"
 HOMEPAGE="https://github.com/ilzu/haiku_ssh_askpass"
 COPYRIGHT="2024 Ilmari \"ilzu\" Siiteri"
 LICENSE="MIT"
-SRC_GIT_REV="76d9a85d20e5d6023e5e6fffc678256cc677b29e"
+srcGitRev="a3356ce4f2ae434333becd66ffdbd78bba7969fc"
 REVISION=1
-SOURCE_URI="$HOMEPAGE/archive/$SRC_GIT_REV.tar.gz"
-CHECKSUM_SHA256="d819170be040f3dcfe5d6fc346b12ea60dfcf92f1bcb820adb04945d5f82779a"
-SOURCE_DIR="haiku_ssh_askpass-$SRC_GIT_REV"
+SOURCE_URI="$HOMEPAGE/archive/$srcGitRev.tar.gz"
+CHECKSUM_SHA256="afce1c2c4ae0fd8e29d8febf0f3305cb995acd64d32c8c1a66acab629b25b418"
+SOURCE_DIR="haiku_ssh_askpass-$srcGitRev"
+
 ARCHITECTURES="all"
+
 PROVIDES="
 	ssh_askpass = $portVersion
 	cmd:ssh_askpass
@@ -17,12 +19,16 @@ REQUIRES="
 	haiku
 	openssh
 	"
-BUILD_REQUIRES="haiku_devel"
+
+BUILD_REQUIRES="
+	haiku_devel
+	"
 BUILD_PREREQUIRES="
 	makefile_engine
-	cmd:make
 	cmd:g++
+	cmd:make
 	"
+
 BUILD()
 {
 	make OBJ_DIR=build $jobArgs
