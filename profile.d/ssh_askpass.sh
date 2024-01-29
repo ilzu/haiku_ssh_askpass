@@ -3,7 +3,7 @@ if [[ -v "${SSH_CLIENT}" ]]; then
 	export DISPLAY
 fi
 
-SSH_ASKPASS=/boot/home/config/non-packaged/bin/ssh_askpass
+SSH_ASKPASS=/boot/system/bin/ssh_askpass
 export SSH_ASKPASS
 
 SSH_ASKPASS_REQUIRE=prefer
