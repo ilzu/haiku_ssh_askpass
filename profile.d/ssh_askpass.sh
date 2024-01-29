@@ -1,4 +1,4 @@
-if [[ -v "${SSH_CLIENT}" ]]; then
+if [[ -z "${SSH_CLIENT}" ]]; then
 	DISPLAY=HaikuDisplay
 	export DISPLAY
 fi
