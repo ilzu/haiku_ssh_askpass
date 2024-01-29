@@ -1,6 +1,11 @@
-1	English	application/x-vnd.haiku-ssh-askpass	2759916784
+1	English	application/x-vnd.haiku-ssh-askpass	353759916
 Enter your SSH passphrase	MainWindow		Enter your SSH passphrase
 Authentcate	MainWindow		Authentcate
-Cancel	MainWindow		Cancel
 Save to keystore	MainWindow		Save to keystore
+No	MainWindow		No
+Yes, and don't show this warning again	MainWindow		Yes, and don't show this warning again
+Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept. Are you sure you want to save the password to keystore?	MainWindow		Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept. Are you sure you want to save the password to keystore?
+Cancel	MainWindow		Cancel
+Security warning!	MainWindow		Security warning!
+Yes	MainWindow		Yes
 SSH Authentication request	MainWindow		SSH Authentication request

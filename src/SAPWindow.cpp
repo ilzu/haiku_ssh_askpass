@@ -80,7 +80,7 @@ void SAPWindow::MessageReceived(BMessage* msg){
 		case MSG_SAVE_TO_KEYSTORE:
 			{
 				if(!((SAPApplication*)be_app)->GetBoolSetting(SAPApplication::DONT_WARN_KEYSTORE) || useKeystore->Value() == B_CONTROL_OFF){
-					BAlert* alert = new BAlert("Security warning!", "Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept. Are you sure you want to save the password to keystore?", "Yes, and don't show this warning again", "Yes", "No", B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+					BAlert* alert = new BAlert(B_TRANSLATE("Security warning!"), B_TRANSLATE("Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept. Are you sure you want to save the password to keystore?"), B_TRANSLATE("Yes, and don't show this warning again"), B_TRANSLATE("Yes"), B_TRANSLATE("No"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 					int32 reply = alert->Go();
 					switch(reply){
 						default:
