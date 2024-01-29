@@ -1,0 +1,7 @@
+1	English	application/x-vnd.haiku-ssh-askpass	2759916784
+Enter your SSH passphrase	MainWindow		Syötä SSH salasanasi
+Authentcate	MainWindow		Kirjaudu
+Cancel	MainWindow		Peruuta
+Save to keystore	MainWindow		Tallenna salasanasäilöön
+SSH Authentication request	MainWindow		SSH kirjautumispyyntö
+est
