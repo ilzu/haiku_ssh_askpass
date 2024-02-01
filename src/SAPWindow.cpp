@@ -23,17 +23,17 @@ extern const char* request;
 #define B_TRANSLATION_CONTEXT "MainWindow"
 
 SAPWindow::SAPWindow() : BWindow(BRect(0, 0, 0, 0), B_TRANSLATE("SSH Authentication request"), B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS | B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_QUIT_ON_WINDOW_CLOSE | B_SAME_POSITION_IN_ALL_WORKSPACES | B_CLOSE_ON_ESCAPE, B_ALL_WORKSPACES){
-	passwdView = new BTextControl(B_TRANSLATE("Enter your SSH passphrase"), "", new BMessage(MSG_AUTH));
+	passwdView = new BTextControl(B_TRANSLATE("Please enter your SSH passphrase"), "", new BMessage(MSG_AUTH));
 	if(request != NULL){
 		passwdView->SetLabel(request);
 	}
 	passwdView->TextView()->HideTyping(true);
 	BButton* cancel = new BButton(B_TRANSLATE("Cancel"), new BMessage(B_CANCEL));
-	BButton* authenticate = new BButton(B_TRANSLATE("Authentcate"), new BMessage(MSG_AUTH));
+	BButton* authenticate = new BButton(B_TRANSLATE("Authenticate"), new BMessage(MSG_AUTH));
 	authenticate->MakeDefault(true);
 	useKeystore = new BCheckBox(B_TRANSLATE("Save to keystore"), new BMessage(MSG_SAVE_TO_KEYSTORE));
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
-		.SetInsets(5)
+		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(passwdView->CreateLabelLayoutItem())
 		.Add(passwdView->CreateTextViewLayoutItem())
 		.AddGroup(B_HORIZONTAL)
@@ -45,6 +45,8 @@ SAPWindow::SAPWindow() : BWindow(BRect(0, 0, 0, 0), B_TRANSLATE("SSH Authenticat
 	.End();
 
 	CenterOnScreen();
+	passwdView->TextView()->MakeFocus(true);
+
 }
 
 SAPWindow::~SAPWindow(){
@@ -79,16 +81,16 @@ void SAPWindow::MessageReceived(BMessage* msg){
 			break;
 		case MSG_SAVE_TO_KEYSTORE:
 			{
-				if(!((SAPApplication*)be_app)->GetBoolSetting(SAPApplication::DONT_WARN_KEYSTORE) || useKeystore->Value() == B_CONTROL_OFF){
-					BAlert* alert = new BAlert(B_TRANSLATE("Security warning!"), B_TRANSLATE("Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept. Are you sure you want to save the password to keystore?"), B_TRANSLATE("Yes, and don't show this warning again"), B_TRANSLATE("Yes"), B_TRANSLATE("No"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+				if(!((SAPApplication*)be_app)->GetBoolSetting(SAPApplication::DONT_WARN_KEYSTORE) || useKeystore->Value() == B_CONTROL_ON){
+					BAlert* alert = new BAlert(B_TRANSLATE("Security warning!"), B_TRANSLATE("Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept. Are you sure you want to save the password to keystore?"), B_TRANSLATE("Save, and don't warn again"), B_TRANSLATE("Save"), B_TRANSLATE("Cancel"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 					int32 reply = alert->Go();
 					switch(reply){
 						default:
-							case 1:
+							case 0:
 								((SAPApplication*)be_app)->SetBoolSetting(SAPApplication::DONT_WARN_KEYSTORE, true);
-							case 2:
+							case 1:
 								break;
-							case 3:
+							case 2:
 								useKeystore->SetValue(B_CONTROL_OFF);
 							break;
 					}
