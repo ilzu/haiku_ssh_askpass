@@ -165,7 +165,7 @@ status_t GetRequestInfo(BString* info){
 		last = requestStr.FindLast(')');
 		if(first != B_ERROR && last != B_ERROR){
 			requestStr.Remove(last, requestStr.Length() - last);
-			requestStr.Remove(0, first);
+			requestStr.Remove(0, first +1);
 			info->Adopt(requestStr);
 			return B_OK;
 		}
