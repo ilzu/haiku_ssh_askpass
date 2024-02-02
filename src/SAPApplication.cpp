@@ -28,7 +28,10 @@ SAPApplication::SAPApplication() : BApplication("application/x-vnd.haiku-ssh-ask
 		BPasswordKey key;
 		key.SetIdentifier(requestInfo);
 		BKeyStore keyStore;
-		status = keyStore.GetKey(B_KEY_TYPE_PASSWORD, requestInfo, key);
+		BString processInfo;
+		int32 parentPid;
+		status = GetParentProcess(&parentPid, &processInfo);
+		status = keyStore.GetKey(B_KEY_TYPE_PASSWORD, requestInfo, processInfo, key);
 		if(status == B_OK){
 			printf("%s", key.Password());
 			retcode = 0;

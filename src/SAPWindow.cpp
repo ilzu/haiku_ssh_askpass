@@ -13,6 +13,7 @@
 #include <KeyStore.h>
 #include <Key.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "SAPWindow.h"
 #include "SAPApplication.h"
@@ -28,8 +29,9 @@ SAPWindow::SAPWindow() : BWindow(BRect(0, 0, 0, 0), B_TRANSLATE("SSH Authenticat
 	int32 parentPid;
 	status_t status;
 	status = GetParentProcess(&parentPid, &parentStr);
-
-	BStringView* parentView = new BStringView("parent", parentStr);
+	BString processStr(B_TRANSLATE("Process ("));
+	processStr << parentPid << ") \"" << parentStr << "\" " << B_TRANSLATE("requests authentication with following string:");
+	BStringView* parentView = new BStringView("parent", processStr);
 	passwdView = new BTextControl(B_TRANSLATE("Please enter your SSH passphrase"), "", new BMessage(MSG_AUTH));
 	if(request != NULL){
 		passwdView->SetLabel(request);
@@ -78,6 +80,12 @@ void SAPWindow::MessageReceived(BMessage* msg){
 					key.SetIdentifier(requestInfo);
 				} else {
 					key.SetIdentifier("ssh passphrase");
+				}
+				int parentPid;
+				BString processInfo;
+				status = GetParentProcess(&parentPid, &processInfo);
+				if(status == B_OK){
+					key.SetSecondaryIdentifier(processInfo);
 				}
 				key.SetPassword(passwdView->Text());
 				keyStore.AddKey(key);
