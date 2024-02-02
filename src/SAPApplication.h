@@ -35,5 +35,6 @@ class SAPApplication : public BApplication{
 };
 
 status_t GetRequestInfo(BString* info);
+status_t GetParentProcess(int32* pid, BString* cmdline);
 
 #endif // SAP_APPLICATION_H_

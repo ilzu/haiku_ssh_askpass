@@ -7,6 +7,7 @@
 #include <TextControl.h>
 #include <Button.h>
 #include <CheckBox.h>
+#include <StringView.h>
 #include <Alert.h>
 #include <Catalog.h>
 #include <KeyStore.h>
@@ -23,6 +24,12 @@ extern const char* request;
 #define B_TRANSLATION_CONTEXT "MainWindow"
 
 SAPWindow::SAPWindow() : BWindow(BRect(0, 0, 0, 0), B_TRANSLATE("SSH Authentication request"), B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS | B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_QUIT_ON_WINDOW_CLOSE | B_SAME_POSITION_IN_ALL_WORKSPACES | B_CLOSE_ON_ESCAPE, B_ALL_WORKSPACES){
+	BString parentStr;
+	int32 parentPid;
+	status_t status;
+	status = GetParentProcess(&parentPid, &parentStr);
+
+	BStringView* parentView = new BStringView("parent", parentStr);
 	passwdView = new BTextControl(B_TRANSLATE("Please enter your SSH passphrase"), "", new BMessage(MSG_AUTH));
 	if(request != NULL){
 		passwdView->SetLabel(request);
@@ -34,6 +41,7 @@ SAPWindow::SAPWindow() : BWindow(BRect(0, 0, 0, 0), B_TRANSLATE("SSH Authenticat
 	useKeystore = new BCheckBox(B_TRANSLATE("Save to keystore"), new BMessage(MSG_SAVE_TO_KEYSTORE));
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
+		.Add(parentView)
 		.Add(passwdView->CreateLabelLayoutItem())
 		.Add(passwdView->CreateTextViewLayoutItem())
 		.AddGroup(B_HORIZONTAL)

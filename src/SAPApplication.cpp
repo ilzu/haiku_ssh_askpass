@@ -7,8 +7,10 @@
 #include <Path.h>
 #include <File.h>
 #include <KeyStore.h>
+#include <kernel/OS.h>
 
 #include <stdio.h>
+#include <unistd.h>
 
 #include "SAPApplication.h"
 #include "SAPWindow.h"
@@ -168,5 +170,14 @@ status_t GetRequestInfo(BString* info){
 	return B_ERROR;
 }
 
-
-
+status_t GetParentProcess(int32* pid, BString* cmdline){
+	pid_t parent = getppid();
+	team_info info;
+	status_t status;
+	status = get_team_info(parent, &info);
+	if(status == B_OK){
+		cmdline->SetTo(info.args);
+	}
+	*pid = parent;
+	return status;
+}
