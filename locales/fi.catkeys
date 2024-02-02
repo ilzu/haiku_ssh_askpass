@@ -1,11 +1,13 @@
-1	English	application/x-vnd.haiku-ssh-askpass	353759916
-Enter your SSH passphrase	MainWindow		Syötä SSH salasanasi
-Authentcate	MainWindow		Kirjaudu
-Save to keystore	MainWindow		Tallenna salasanasäilöön
-No	MainWindow		Peruuta
-Yes, and don't show this warning again	MainWindow		Kyllä, äläkä näytä tätä varoitusta uudestaan
+1	English	application/x-vnd.haiku-ssh-askpass	2841319012
+Save, and don't warn again	MainWindow		Tallenna, ja älä varoita enää
+Please enter your SSH passphrase	MainWindow		Syötä SSH salasanasi
+Authenticate	MainWindow		Kirjaudu
+Save to keystore	MainWindow		Tallenna saasanasäilöön
+Process (	MainWindow		Prosessi (
 Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept. Are you sure you want to save the password to keystore?	MainWindow		Haikun salasanasäilö ei ole vielä turvallinen. Kuka tahansa jolla on pääsy tietokoneellesi voi saada tallennetut salasanat tietoonsa. Tämä asetus on luotu tulevaisuutta ajatellen ja toiminnallisuuden testaamista ja esittelyä varten. Oletko varma että haluat tallentaa salasanasi salasanasäilöön?
+requests authentication with following string:	MainWindow		pyytää kirjautumista seuraavalla tiedoilla:
 Cancel	MainWindow		Peruuta
+Save	MainWindow		Tallenna
 Security warning!	MainWindow		Turvallisuusvaroitus!
-Yes	MainWindow		Kyllä
 SSH Authentication request	MainWindow		SSH kirjautumispyyntö
+est
