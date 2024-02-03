@@ -81,7 +81,7 @@ void SAPWindow::MessageReceived(BMessage* msg){
 				} else {
 					key.SetIdentifier("ssh passphrase");
 				}
-				int parentPid;
+				int32 parentPid;
 				BString processInfo;
 				status = GetParentProcess(&parentPid, &processInfo);
 				if(status == B_OK){
