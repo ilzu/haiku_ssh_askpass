@@ -31,7 +31,7 @@ SAPWindow::SAPWindow() : BWindow(BRect(0, 0, 0, 0), B_TRANSLATE("SSH Authenticat
 	status = GetParentProcess(&parentPid, &parentStr);
 	BString pidStr;
 	pidStr << parentPid;
-	BString processStr(B_TRANSLATE("Process (%pid%) %parent_process_cmd% requests authentication with following string:"));
+	BString processStr(B_TRANSLATE("Process (%pid%) \"%parent_process_cmd%\" requests authentication with following string:"));
 	processStr.ReplaceAll("%parent_process_cmd%", parentStr);
 	processStr.ReplaceAll("%pid%", pidStr); 
 	
@@ -102,7 +102,7 @@ void SAPWindow::MessageReceived(BMessage* msg){
 		case MSG_SAVE_TO_KEYSTORE:
 			{
 				if(((SAPApplication*)be_app)->GetBoolSetting(SAPApplication::DONT_WARN_KEYSTORE) == false && useKeystore->Value() == B_CONTROL_ON){
-					BAlert* alert = new BAlert(B_TRANSLATE("Security warning!"), B_TRANSLATE("Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept. Are you sure you want to save the password to keystore?"), B_TRANSLATE("Save, and don't warn again"), B_TRANSLATE("Save"), B_TRANSLATE("Cancel"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+					BAlert* alert = new BAlert(B_TRANSLATE("Security warning!"), B_TRANSLATE("Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?"), B_TRANSLATE("Save, and don't warn again"), B_TRANSLATE("Save"), B_TRANSLATE("Cancel"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 					int32 reply = alert->Go();
 					switch(reply){
 						default:
