@@ -29,8 +29,12 @@ SAPWindow::SAPWindow() : BWindow(BRect(0, 0, 0, 0), B_TRANSLATE("SSH Authenticat
 	int32 parentPid;
 	status_t status;
 	status = GetParentProcess(&parentPid, &parentStr);
-	BString processStr(B_TRANSLATE("Process ("));
-	processStr << parentPid << ") \"" << parentStr << "\" " << B_TRANSLATE("requests authentication with following string:");
+	BString pidStr;
+	pidStr << parentPid;
+	BString processStr(B_TRANSLATE("Process (%pid%) %parent_process_cmd% requests authentication with following string:"));
+	processStr.ReplaceAll("%parent_process_cmd%", parentStr);
+	processStr.ReplaceAll("%pid%", pidStr); 
+	
 	BStringView* parentView = new BStringView("parent", processStr);
 	passwdView = new BTextControl(B_TRANSLATE("Please enter your SSH passphrase"), "", new BMessage(MSG_AUTH));
 	if(request != NULL){
