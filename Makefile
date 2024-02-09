@@ -40,6 +40,7 @@ SRCS = \
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.
 RDEFS = \
+	 ssh_askpass.rdef  \
 
 
 #	Specify the resource files to use. Full or relative paths can be used.
@@ -49,6 +50,8 @@ RSRCS = \
 
 # End Pe/Eddie support.
 # @<-src@
+#%}
+
 #%}
 
 #%}
@@ -123,7 +126,7 @@ LINKER_FLAGS =
 #	Specify the version of this binary. Example:
 #		-app 3 4 0 d 0 -short 340 -long "340 "`echo -n -e '\302\251'`"1999 GNU GPL"
 #	This may also be specified in a resource.
-APP_VERSION := -app 0 1 0 d 0 -short 010 -long 010
+APP_VERSION := -app 0 3 0 d 0 -short 030 -long 030
 
 #	(Only used when "TYPE" is "DRIVER"). Specify the desired driver install
 #	location in the /dev hierarchy. Example:
