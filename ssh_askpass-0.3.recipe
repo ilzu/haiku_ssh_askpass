@@ -5,7 +5,7 @@ COPYRIGHT="2024 Ilmari \"ilzu\" Siiteri"
 LICENSE="MIT"
 REVISION=1
 SOURCE_URI="$HOMEPAGE/archive/refs/tags/v$portVersion.tar.gz"
-CHECKSUM_SHA256="80a34b9308a4765cb58f4b0e4427d28890f42cc75f6c319bba0c92230eb264cf"
+CHECKSUM_SHA256="eb078ffcd91dc3bdb9fbead5de0031888e35da4a96c83555f1ced7d101fc4280"
 SOURCE_DIR="haiku_ssh_askpass-$portVersion"
 
 ARCHITECTURES="all"
