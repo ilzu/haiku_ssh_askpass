@@ -31,7 +31,7 @@ BUILD_PREREQUIRES="
 BUILD()
 {
 	make OBJ_DIR=build $jobArgs
-	make bindcatalogs
+	make OBJ_DIR=build bindcatalogs
 }
 
 INSTALL()
