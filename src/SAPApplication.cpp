@@ -29,9 +29,10 @@ SAPApplication::SAPApplication() : BApplication("application/x-vnd.haiku-ssh-ask
 		key.SetIdentifier(requestInfo);
 		BKeyStore keyStore;
 		BString processInfo;
+		BString executable;
 		int32 parentPid;
-		status = GetParentProcess(&parentPid, &processInfo);
-		status = keyStore.GetKey("ssh", B_KEY_TYPE_PASSWORD, requestInfo, processInfo, false, key);
+		status = GetParentProcess(&parentPid, &processInfo, &executable);
+		status = keyStore.GetKey("ssh", B_KEY_TYPE_PASSWORD, requestInfo, executable, false, key);
 		if(status == B_OK){
 			printf("%s", key.Password());
 			retcode = 0;
@@ -150,12 +151,13 @@ status_t GetRequestInfo(BString* info){
 	if(request != NULL){
 		BString requestStr(request);
 		int32 first = 0, last = 0;
+
 		// path to private key
-		first = requestStr.FindFirst('/');
-		last = requestStr.FindLast(':');
+		first = requestStr.FindFirst('\'');
+		last = requestStr.FindLast('\'');
 		if(first != B_ERROR && last != B_ERROR){
 			requestStr.Remove(last, requestStr.Length() - last);
-			requestStr.Remove(0, first);
+			requestStr.Remove(0, first +1);
 			info->Adopt(requestStr);
 			return B_OK;
 		}
@@ -173,14 +175,29 @@ status_t GetRequestInfo(BString* info){
 	return B_ERROR;
 }
 
-status_t GetParentProcess(int32* pid, BString* cmdline){
+status_t GetParentProcess(int32* pid, BString* cmdline, BString* executable){
 	pid_t parent = getppid();
-	team_info info;
+	team_info t_info;
 	status_t status;
-	status = get_team_info(parent, &info);
+	status = get_team_info(parent, &t_info);
 	if(status == B_OK){
-		cmdline->SetTo(info.args);
+		cmdline->SetTo(t_info.args);
+	}
+	status = B_OK;
+	int32 cookie = 0;
+	image_info i_info;
+	while(status == B_OK){
+		status = get_next_image_info(parent, &cookie, &i_info);
+		BString cmdline_system("/boot/system");
+		cmdline_system.Append(*cmdline);
+		if(cmdline->StartsWith(i_info.name) || cmdline_system.StartsWith(i_info.name)){
+			executable->SetTo(i_info.name);
+			break;
+		}
 	}
 	*pid = parent;
+	if(executable->IsEmpty()){
+		return B_ERROR;
+	}
 	return status;
 }

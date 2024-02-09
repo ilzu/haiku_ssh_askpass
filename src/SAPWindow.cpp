@@ -26,9 +26,10 @@ extern const char* request;
 
 SAPWindow::SAPWindow() : BWindow(BRect(0, 0, 0, 0), B_TRANSLATE("SSH Authentication request"), B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS | B_NOT_ZOOMABLE | B_NOT_RESIZABLE | B_QUIT_ON_WINDOW_CLOSE | B_SAME_POSITION_IN_ALL_WORKSPACES | B_CLOSE_ON_ESCAPE, B_ALL_WORKSPACES){
 	BString parentStr;
+	BString executable;
 	int32 parentPid;
 	status_t status;
-	status = GetParentProcess(&parentPid, &parentStr);
+	status = GetParentProcess(&parentPid, &parentStr, &executable);
 	BString pidStr;
 	pidStr << parentPid;
 	BString processStr(B_TRANSLATE("Process (%pid%) \"%parent_process_cmd%\" requests authentication with following string:"));
@@ -87,11 +88,25 @@ void SAPWindow::MessageReceived(BMessage* msg){
 				}
 				int32 parentPid;
 				BString processInfo;
-				status = GetParentProcess(&parentPid, &processInfo);
+				BString executable;
+				status = GetParentProcess(&parentPid, &processInfo, &executable);
 				if(status == B_OK){
-					key.SetSecondaryIdentifier(processInfo);
+					key.SetSecondaryIdentifier(executable);
 				}
 				key.SetPassword(passwdView->Text());
+				
+				BString keyring;
+				uint32 cookie = 0;
+				bool found = false;
+				status = B_OK;
+				while(status == B_OK){
+					status = keyStore.GetNextKeyring(cookie, keyring);
+					if(keyring == "ssh") found = true;
+				}
+				if(!found){
+					status = keyStore.AddKeyring("ssh");
+				}
+				
 				keyStore.AddKey("ssh", key);
 			}
 			printf("%s", passwdView->Text());
