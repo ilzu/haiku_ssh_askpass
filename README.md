@@ -10,9 +10,12 @@ This is a quick and dirty native ssh_askpass implementation for Haiku. It suppor
 |Language|Translator|
 |--------|---------|
 |Catalan (ca)|Davidmp|
+|English (Australian) (en_au)|jt15s|
 |French (fr)|Maxime Chretien|
 |Friulian (fur)|tmtfx|
+|German (de)|humdinger|
 |Spanish (es)|cafeina|
 |Spanish (Latin American) (es_419)|cafeina|
+|Swedish (sv)|Fredrik Modéen|
 
 Thanks for all translators!

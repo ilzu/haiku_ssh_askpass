@@ -1,0 +1,11 @@
+1	English	application/x-vnd.haiku-ssh-askpass	458024381
+Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?	MainWindow		Haikus Keystore ist zur Zeit noch nicht gesichert. Jeder mit Zugagng zu diesem Computer kann Passwörter als Klartext lesen. Diese Option ist gedacht für die Zukunft, bzw. zeigt die generelle Machbarkeit.\n\n\nSolls das Passwort tatsächlich im Keystore gespeichert werden?
+Save, and don't warn again	MainWindow		Speichern und nicht mehr warnen
+Process (%pid%) \"%parent_process_cmd%\" requests authentication with following string:	MainWindow		Prozess (%pid%) \"%parent_process_cmd%\" bittet um Authentifizierung mit folgender Aufforderung:
+Please enter your SSH passphrase	MainWindow		Bitte SSH Passwort eingeben.
+Authenticate	MainWindow		Authentifizieren
+Save to keystore	MainWindow		In Keystore speichern
+Cancel	MainWindow		Abbrechen
+Save	MainWindow		Speichern
+Security warning!	MainWindow		Sicherheitswarnung!
+SSH Authentication request	MainWindow		SSH Authentifizierung erforderlich
