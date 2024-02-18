@@ -1,5 +1,5 @@
-1	English	application/x-vnd.haiku-ssh-askpass	458024381
-Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?	MainWindow		L'archivi des clâfs di Haiku in chest moment nol è sigûr. Ducj chei che a puedin acedi al to computer a podaressin otignî cheste password tant che test in clâr. Cheste opzion e je zontade par un doman e come verifiche teoriche.\n\nSalvâ pardabon la password tal archivi des clâfs?
+1	English	application/x-vnd.haiku-ssh-askpass	60550097OC
+Haiku keystore is currently not secure. Anyone with access to your computer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?	MainWindow		L'archivi des clâfs di Haiku in chest moment nol è sigûr. Ducj chei che a puedin acedi al to computer a podaressin otignî cheste password tant che test in clâr. Cheste opzion e je zontade par un doman e come verifiche teoriche.\n\nSalvâ pardabon la password tal archivi des clâfs?
 Save, and don't warn again	MainWindow		Salve e no sta visâmi plui
 Process (%pid%) \"%parent_process_cmd%\" requests authentication with following string:	MainWindow		Procès (%pid%) \"%parent_process_cmd%\" al domande autenticazion cun cheste stringhe:
 Please enter your SSH passphrase	MainWindow		Inserìs la tô frase-password di SSH

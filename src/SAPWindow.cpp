@@ -94,7 +94,7 @@ void SAPWindow::MessageReceived(BMessage* msg){
 					key.SetSecondaryIdentifier(executable);
 				}
 				key.SetPassword(passwdView->Text());
-				
+
 				BString keyring;
 				uint32 cookie = 0;
 				bool found = false;
@@ -106,7 +106,7 @@ void SAPWindow::MessageReceived(BMessage* msg){
 				if(!found){
 					status = keyStore.AddKeyring("ssh");
 				}
-				
+
 				keyStore.AddKey("ssh", key);
 			}
 			printf("%s", passwdView->Text());
@@ -117,7 +117,7 @@ void SAPWindow::MessageReceived(BMessage* msg){
 		case MSG_SAVE_TO_KEYSTORE:
 			{
 				if(((SAPApplication*)be_app)->GetBoolSetting(SAPApplication::DONT_WARN_KEYSTORE) == false && useKeystore->Value() == B_CONTROL_ON){
-					BAlert* alert = new BAlert(B_TRANSLATE("Security warning!"), B_TRANSLATE("Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?"), B_TRANSLATE("Save, and don't warn again"), B_TRANSLATE("Save"), B_TRANSLATE("Cancel"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+					BAlert* alert = new BAlert(B_TRANSLATE("Security warning!"), B_TRANSLATE("Haiku keystore is currently not secure. Anyone with access to your computer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?"), B_TRANSLATE("Save, and don't warn again"), B_TRANSLATE("Save"), B_TRANSLATE("Cancel"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 					int32 reply = alert->Go();
 					switch(reply){
 						default:

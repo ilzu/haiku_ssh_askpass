@@ -1,5 +1,5 @@
-1	English	application/x-vnd.haiku-ssh-askpass	458024381
-Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?	MainWindow		Le magasin de clés de Haiku n'est actuellement pas sécurisé. Toute personne ayant accès à votre ordinateur peut obtenir ce mot de passe en clair. Cette option est ajoutée pour l'avenir, comme preuve de concept.\n\nÊtes-vous sûr de vouloir enregistrer le mot de passe dans le magasin de clés ?
+1	English	application/x-vnd.haiku-ssh-askpass	60550097OC
+Haiku keystore is currently not secure. Anyone with access to your computer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?	MainWindow		Le magasin de clés de Haiku n'est actuellement pas sécurisé. Toute personne ayant accès à votre ordinateur peut obtenir ce mot de passe en clair. Cette option est ajoutée pour l'avenir, comme preuve de concept.\n\nÊtes-vous sûr de vouloir enregistrer le mot de passe dans le magasin de clés ?
 Save, and don't warn again	MainWindow		Enregistrer et ne plus avertir
 Process (%pid%) \"%parent_process_cmd%\" requests authentication with following string:	MainWindow		Processus (%pid%) \"%parent_process_cmd%\" demander l'authentification avec la chaîne de caractères suivante :
 Please enter your SSH passphrase	MainWindow		Veillez entrer votre mot de passe SSH
