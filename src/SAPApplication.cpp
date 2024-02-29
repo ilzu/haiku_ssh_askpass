@@ -7,6 +7,8 @@
 #include <Path.h>
 #include <File.h>
 #include <KeyStore.h>
+#include <Alert.h>
+#include <Catalog.h>
 #include <kernel/OS.h>
 
 #include <stdio.h>
@@ -17,11 +19,39 @@
 
 extern const char* request;
 extern int retcode;
+extern SAPApplication::AskPassHint hint;
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Application"
 
 SAPApplication::SAPApplication() : BApplication("application/x-vnd.haiku-ssh-askpass"){
 	status_t status;
 	window = NULL;
 	LoadSettings();
+	switch(hint){
+		case HINT_NONE:
+			{
+				if(request != NULL){
+					BAlert* alert = new BAlert(B_TRANSLATE("Warning!"), request, B_TRANSLATE("Close"), NULL, NULL, B_WIDTH_AS_USUAL, B_STOP_ALERT);
+					alert->Go();
+				}
+			}
+			return;
+		case HINT_CONFIRM:
+			{
+				if(request != NULL){
+					BAlert* alert = new BAlert(B_TRANSLATE("Warning!"), request, B_TRANSLATE("Yes"), B_TRANSLATE("No"), NULL, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+					alert->SetShortcut(1, B_ESCAPE);
+					int32 reply = alert->Go();
+					retcode = reply == 0 ? 0 : -1;
+					printf("%s", reply == 1 ? "no" : "yes");
+					
+				}
+			}
+			return;
+		default:
+			break;
+	}
 	if(GetBoolSetting(USE_KEYSTORE) == true){
 		BString requestInfo;
 		GetRequestInfo(&requestInfo);

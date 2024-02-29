@@ -1,11 +1,16 @@
-1	English	application/x-vnd.haiku-ssh-askpass	60550097
-Save, and don't warn again	MainWindow		Save, and don't warn again
+1	English	application/x-vnd.haiku-ssh-askpass	514886996
 Process (%pid%) \"%parent_process_cmd%\" requests authentication with following string:	MainWindow		Process (%pid%) \"%parent_process_cmd%\" requests authentication with following string:
 Please enter your SSH passphrase	MainWindow		Please enter your SSH passphrase
 Authenticate	MainWindow		Authenticate
-Haiku keystore is currently not secure. Anyone with access to your computer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?	MainWindow		Haiku keystore is currently not secure. Anyone with access to your computer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?
 Save to keystore	MainWindow		Save to keystore
+Haiku keystore is currently not secure. Anyone with access to your computer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?	MainWindow		Haiku keystore is currently not secure. Anyone with access to your computer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?
+Close	Application		Close
+Warning!	Application		Warning!
 Cancel	MainWindow		Cancel
 Save	MainWindow		Save
 Security warning!	MainWindow		Security warning!
+No	Application		No
 SSH Authentication request	MainWindow		SSH Authentication request
+Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?	MainWindow		Haiku keystore is currently not secure. Anyone with access to your compputer might get this password as clear text. This option is added for future and as a proof of concept.\n\nAre you sure you want to save the password to keystore?
+Save, and don't warn again	MainWindow		Save, and don't warn again
+Yes	Application		Yes

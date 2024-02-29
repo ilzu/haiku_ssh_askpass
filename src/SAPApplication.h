@@ -17,6 +17,12 @@ class SAPApplication : public BApplication{
 			USE_KEYSTORE,
 			DONT_WARN_KEYSTORE,
 		} Setting;
+		
+		typedef enum AskPassHint{
+			HINT_NONE,
+			HINT_DEFAULT,
+			HINT_CONFIRM,
+		} AskPassHint; 
 
 	public:
 		SAPApplication();
